@@ -4,7 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.ynovschool.myBlog.model.Article;
+import org.ynovschool.myBlog.model.Category;
 import org.ynovschool.myBlog.repository.ArticleRepository;
+import org.ynovschool.myBlog.repository.CategoryRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,8 +17,11 @@ public class ArticleController {
 
     private final ArticleRepository articleRepository;
 
-    public ArticleController(ArticleRepository articleRepository) {
+    private final CategoryRepository categoryRepository;
+
+    public ArticleController(ArticleRepository articleRepository, CategoryRepository categoryRepository) {
         this.articleRepository = articleRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @GetMapping
@@ -42,6 +47,13 @@ public class ArticleController {
         article.setCreatedAt(LocalDateTime.now());
         article.setUpdatedAt(LocalDateTime.now());
 
+        if (article.getCategory() != null) {
+            Category category = categoryRepository.findById(article.getCategory().getId()).orElse(null);
+            if (category == null) {
+                return ResponseEntity.notFound().build();
+            }
+            article.setCategory(category);
+        }
         Article savedArticle = articleRepository.save(article);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedArticle);
     }
@@ -57,8 +69,16 @@ public class ArticleController {
         article.setContent(articleDetails.getContent());
         article.setUpdatedAt(LocalDateTime.now());
 
-        Article savedArticle = articleRepository.save(article);
-        return ResponseEntity.ok(savedArticle);
+        if(articleDetails.getCategory() != null) {
+            Category category = categoryRepository.findById(articleDetails.getCategory().getId()).orElse(null);
+            if (category == null) {
+                return ResponseEntity.notFound().build();
+            }
+            article.setCategory(category);
+        }
+
+        Article updatedArticle = articleRepository.save(article);
+        return ResponseEntity.ok(updatedArticle);
     }
 
     @DeleteMapping("/{id}")
