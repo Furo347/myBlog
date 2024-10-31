@@ -1,20 +1,16 @@
-package org.ynovschool.myBlog.model;
-
-import jakarta.persistence.*;
+package org.ynovschool.myBlog.dto;
 
 import java.util.List;
 
-@Entity
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CategoryDTO {
+
     private Long id;
 
-    @Column(nullable = false, length = 50, unique = true)
     private String name;
 
-    @OneToMany (mappedBy = "category")
-    private List<Article> articles;
+    private List<ArticleDTO> articles;
+
+    //getters and setters
 
     public Long getId() {
         return id;
@@ -32,11 +28,11 @@ public class Category {
         this.name = name;
     }
 
-    public List<Article> getArticles() {
+    public List<ArticleDTO> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(List<ArticleDTO> articles) {
         this.articles = articles;
     }
 }
