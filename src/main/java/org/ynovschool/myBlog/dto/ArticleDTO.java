@@ -1,6 +1,7 @@
 package org.ynovschool.myBlog.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ArticleDTO {
 
@@ -13,6 +14,8 @@ public class ArticleDTO {
     private LocalDateTime updatedAt;
 
     private String categoryName;
+
+    private List<String> image;
 
     //getters and setters
 
@@ -55,5 +58,13 @@ public class ArticleDTO {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public List<String> getImage() {
+        return image;
+    }
+
+    public void setImage(List<String> image) {
+        this.image = image;
     }
 }

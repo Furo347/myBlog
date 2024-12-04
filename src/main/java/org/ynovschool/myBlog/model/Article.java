@@ -3,6 +3,7 @@ package org.ynovschool.myBlog.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Article {
@@ -27,6 +28,13 @@ public class Article {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToMany
+    @JoinTable(
+            name = "article_image",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "image_id")
+    )
+    private List<Image> images;
 
     //getters and setters
 
@@ -76,5 +84,13 @@ public class Article {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }
