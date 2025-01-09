@@ -17,6 +17,8 @@ public class ArticleDTO {
 
     private List<String> image;
 
+    private List<AuthorDTO> authors;
+
     //getters and setters
 
 
@@ -66,5 +68,13 @@ public class ArticleDTO {
 
     public void setImage(List<String> image) {
         this.image = image;
+    }
+
+    public List<AuthorDTO> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<AuthorDTO> authors) {
+        this.authors = authors;
     }
 }
