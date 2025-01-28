@@ -2,6 +2,7 @@ package org.ynovschool.myBlog.service;
 
 import org.springframework.stereotype.Service;
 import org.ynovschool.myBlog.dto.ArticleDTO;
+import org.ynovschool.myBlog.exception.RessourceNotFoundException;
 import org.ynovschool.myBlog.mapper.ArticleMapper;
 import org.ynovschool.myBlog.model.*;
 import org.ynovschool.myBlog.repository.*;
@@ -41,7 +42,7 @@ public class ArticleService {
     }
 
     public ArticleDTO getArticleById(Long id) {
-        Article article = articleRepository.findById(id).orElse(null);
+        Article article = articleRepository.findById(id).orElseThrow(() -> new RessourceNotFoundException("Article not found with id: " + id));
         if (article == null) {
             return null;
         }
