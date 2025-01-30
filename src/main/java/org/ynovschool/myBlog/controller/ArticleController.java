@@ -1,8 +1,10 @@
 package org.ynovschool.myBlog.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.ynovschool.myBlog.dto.ArticleCreateDTO;
 import org.ynovschool.myBlog.dto.ArticleDTO;
 import org.ynovschool.myBlog.model.*;
 import org.ynovschool.myBlog.repository.*;
@@ -93,8 +95,8 @@ public class ArticleController {
     }
 
     @PostMapping
-    public ResponseEntity<ArticleDTO> createArticle(@RequestBody Article article) {
-        ArticleDTO savedArticle = articleService.createArticle(article);
+    public ResponseEntity<ArticleDTO> createArticle(@Valid @RequestBody ArticleCreateDTO articleCreateDTO) {
+        ArticleDTO savedArticle = articleService.createArticle(articleCreateDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedArticle);
     }
 

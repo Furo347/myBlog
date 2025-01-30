@@ -1,6 +1,7 @@
 package org.ynovschool.myBlog.service;
 
 import org.springframework.stereotype.Service;
+import org.ynovschool.myBlog.dto.ArticleCreateDTO;
 import org.ynovschool.myBlog.dto.ArticleDTO;
 import org.ynovschool.myBlog.exception.RessourceNotFoundException;
 import org.ynovschool.myBlog.mapper.ArticleMapper;
@@ -49,7 +50,9 @@ public class ArticleService {
         return articleMapper.convertToDTO(article);
     }
 
-    public ArticleDTO createArticle(Article article) {
+    public ArticleDTO createArticle(ArticleCreateDTO articleCreateDTO) {
+
+        Article article = articleMapper.convertToEntity(articleCreateDTO);
         article.setCreatedAt(LocalDateTime.now());
         article.setUpdatedAt(LocalDateTime.now());
 

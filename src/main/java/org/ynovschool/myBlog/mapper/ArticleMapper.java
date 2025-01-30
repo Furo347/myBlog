@@ -1,6 +1,7 @@
 package org.ynovschool.myBlog.mapper;
 
 import org.springframework.stereotype.Component;
+import org.ynovschool.myBlog.dto.ArticleCreateDTO;
 import org.ynovschool.myBlog.dto.ArticleDTO;
 import org.ynovschool.myBlog.dto.AuthorDTO;
 import org.ynovschool.myBlog.model.Article;
@@ -38,5 +39,12 @@ public class ArticleMapper {
         }
 
         return articleDTO;
+    }
+
+    public Article convertToEntity(ArticleCreateDTO articleCreateDTO) {
+        Article article = new Article();
+        article.setTitle(articleCreateDTO.getTitle());
+        article.setContent(articleCreateDTO.getContent());
+        return article;
     }
 }
