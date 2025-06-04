@@ -1,24 +1,21 @@
 package org.ynovschool.myBlog.model;
 
-
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Image {
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
 
-    @Column(nullable = false)
-    private String url;
-
-    @ManyToMany(mappedBy = "images")
+    @ManyToMany(mappedBy = "tags")
     private List<Article> articles;
 
-    //getters and setters
+    // Getters et setters
 
     public Long getId() {
         return id;
@@ -28,12 +25,12 @@ public class Image {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getName() {
+        return name;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Article> getArticles() {

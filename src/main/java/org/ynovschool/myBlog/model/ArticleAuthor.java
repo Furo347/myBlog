@@ -16,11 +16,12 @@ public class ArticleAuthor {
     @JoinColumn(name = "author_id")
     private Author author;
 
+
     @Column(nullable = false, length = 50)
     private String contribution;
 
+    // Getters et setters
 
-    //getters and setters
     public Long getId() {
         return id;
     }

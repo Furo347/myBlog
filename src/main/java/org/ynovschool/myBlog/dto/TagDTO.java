@@ -2,10 +2,11 @@ package org.ynovschool.myBlog.dto;
 
 import java.util.List;
 
-public class CategoryDTO {
+public class TagDTO {
+
     private Long id;
     private String name;
-    private List<ArticleDTO> articles;
+    private List<Long> articleIds;
 
     // Getters et setters
 
@@ -25,11 +26,11 @@ public class CategoryDTO {
         this.name = name;
     }
 
-    public List<ArticleDTO> getArticles() {
-        return articles;
+    public List<Long> getArticleIds() {
+        return articleIds;
     }
 
-    public void setArticles(List<ArticleDTO> articles) {
-        this.articles = articles;
+    public void setArticleIds(List<Long> articleIds) {
+        this.articleIds = articleIds;
     }
 }

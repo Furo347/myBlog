@@ -4,23 +4,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class ArticleDTO {
-
     private Long id;
-
     private String title;
-
     private String content;
-
+    private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private Long categoryId;
+    private List<Long> tagIds;
+    private List<ArticleAuthorDTO> authors;
 
-    private String categoryName;
-
-    private List<String> image;
-
-    private List<AuthorDTO> authors;
-
-    //getters and setters
-
+    // Getters et setters
 
     public Long getId() {
         return id;
@@ -46,6 +39,14 @@ public class ArticleDTO {
         this.content = content;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -54,27 +55,19 @@ public class ArticleDTO {
         this.updatedAt = updatedAt;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public List<String> getImage() {
-        return image;
+    public List<Long> getTagIds() {
+        return tagIds;
     }
 
-    public void setImage(List<String> image) {
-        this.image = image;
-    }
-
-    public List<AuthorDTO> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<AuthorDTO> authors) {
-        this.authors = authors;
+    public void setTagIds(List<Long> tagIds) {
+        this.tagIds = tagIds;
     }
 }

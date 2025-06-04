@@ -7,47 +7,45 @@ import java.util.List;
 
 public class ArticleCreateDTO {
 
-    @NotBlank(message = "Le titre ne peut pas être vide")
+    @NotBlank(message = "Le titre ne doit pas être vide")
     @Size(min = 2, max = 50, message = "Le titre doit contenir entre 2 et 50 caractères")
     private String title;
 
-    @NotBlank(message = "Le contenu ne peut pas être vide")
+    @NotBlank(message = "Le contenu ne doit pas être vide")
     @Size(min = 10, message = "Le contenu doit contenir au moins 10 caractères")
     private String content;
 
-    @NotNull(message = "L'id de la catégorie ne peut pas être nul")
-    @Positive(message = "L'id de la catégorie doit être positif")
+    @NotNull(message = "L'ID de la catégorie ne doit pas être nul")
+    @Positive(message = "L'ID de la catégorie doit être un nombre positif")
     private Long categoryId;
 
-    @NotEmpty(message = "La liste d'images ne peut pas être vide")
+    @NotEmpty(message = "La liste des images ne doit pas être vide")
     private List<@Valid ImageDTO> images;
 
-    @NotEmpty(message = "La liste d'auteurs ne peut pas être vide")
+    @NotEmpty(message = "La liste des auteurs ne doit pas être vide")
     private List<@Valid AuthorContributionDTO> authors;
 
-    //getters and setters
-
-    public String getTitle() {
+    public @NotBlank(message = "Le titre ne doit pas être vide") @Size(min = 2, max = 50, message = "Le titre doit contenir entre 2 et 50 caractères") String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@NotBlank(message = "Le titre ne doit pas être vide") @Size(min = 2, max = 50, message = "Le titre doit contenir entre 2 et 50 caractères") String title) {
         this.title = title;
     }
 
-    public String getContent() {
+    public @NotBlank(message = "Le contenu ne doit pas être vide") @Size(min = 10, message = "Le contenu doit contenir au moins 10 caractères") String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(@NotBlank(message = "Le contenu ne doit pas être vide") @Size(min = 10, message = "Le contenu doit contenir au moins 10 caractères") String content) {
         this.content = content;
     }
 
-    public Long getCategoryId() {
+    public @NotNull(message = "L'ID de la catégorie ne doit pas être nul") @Positive(message = "L'ID de la catégorie doit être un nombre positif") Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Long categoryId) {
+    public void setCategoryId(@NotNull(message = "L'ID de la catégorie ne doit pas être nul") @Positive(message = "L'ID de la catégorie doit être un nombre positif") Long categoryId) {
         this.categoryId = categoryId;
     }
 

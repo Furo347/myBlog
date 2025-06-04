@@ -10,8 +10,8 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    private Long id;
     @Column(nullable = false, length = 50)
     private String title;
 
@@ -30,16 +30,17 @@ public class Article {
 
     @ManyToMany
     @JoinTable(
-            name = "article_image",
+            name = "article_tag",
             joinColumns = @JoinColumn(name = "article_id"),
-            inverseJoinColumns = @JoinColumn(name = "image_id")
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private List<Image> images;
+
+    private List<Tag> tags;
 
     @OneToMany(mappedBy = "article")
     private List<ArticleAuthor> articleAuthors;
 
-    //getters and setters
+    // Getters et setters
 
     public Long getId() {
         return id;
@@ -89,19 +90,11 @@ public class Article {
         this.category = category;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public List<Tag> getTags() {
+        return tags;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
-
-    public List<ArticleAuthor> getArticleAuthors() {
-        return articleAuthors;
-    }
-
-    public void setArticleAuthors(List<ArticleAuthor> articleAuthors) {
-        this.articleAuthors = articleAuthors;
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }

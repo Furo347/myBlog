@@ -1,14 +1,14 @@
 package org.ynovschool.myBlog.dto;
 
+import java.util.List;
+
 public class AuthorDTO {
-
     private Long id;
-
     private String firstname;
-
     private String lastname;
+    private List<ArticleAuthorDTO> articleAuthors;
 
-    //getters and setters
+    // Getters et setters
 
     public Long getId() {
         return id;
@@ -32,5 +32,13 @@ public class AuthorDTO {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public List<ArticleAuthorDTO> getArticleAuthors() {
+        return articleAuthors;
+    }
+
+    public void setArticleAuthors(List<ArticleAuthorDTO> articleAuthors) {
+        this.articleAuthors = articleAuthors;
     }
 }

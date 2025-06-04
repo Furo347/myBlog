@@ -8,12 +8,11 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(nullable = false, length = 50, unique = true)
+    private Long id;
     private String name;
 
-    @OneToMany (mappedBy = "category")
+    @OneToMany(mappedBy = "category")
     private List<Article> articles;
 
     public Long getId() {

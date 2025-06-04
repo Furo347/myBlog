@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Author {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 50)
@@ -19,7 +19,8 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<ArticleAuthor> articleAuthors;
 
-    //getters and setters
+    // Getters et setters
+
     public Long getId() {
         return id;
     }
@@ -44,11 +45,11 @@ public class Author {
         this.lastname = lastname;
     }
 
-    public List<ArticleAuthor> getArticlesAuthors() {
+    public List<ArticleAuthor> getArticleAuthors() {
         return articleAuthors;
     }
 
-    public void setArticlesAuthors(List<ArticleAuthor> articlesAuthors) {
-        this.articleAuthors = articlesAuthors;
+    public void setArticleAuthors(List<ArticleAuthor> articleAuthors) {
+        this.articleAuthors = articleAuthors;
     }
 }
